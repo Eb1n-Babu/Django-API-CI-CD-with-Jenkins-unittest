@@ -1,0 +1,40 @@
+# Node modules (if using Node/React)
+node_modules/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Django specific
+*.sqlite3
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.env
+.env.*
+
+# Vite build output
+dist/
+
+# Docker artifacts
+*.pid
+*.db
+*.sock
+*.tar
+*.gz
+
+# VS Code settings
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+
+# Ignore Dockerfile backups or temp
+Dockerfile.*
