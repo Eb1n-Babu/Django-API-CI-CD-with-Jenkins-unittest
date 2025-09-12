@@ -3,12 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/your-repo.git'  // Replace with your repo
-            }
-        }
-        stage('Lint') {
-            steps {
-                sh 'python -m pylint tasks/ todo_api/'
+                git 'https://github.com/Eb1n-Babu/Django-API-CI-CD-with-Jenkins-unittest.git'
             }
         }
         stage('Test') {
@@ -21,24 +16,19 @@ pipeline {
                 '''
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t django-todo-api:$BUILD_NUMBER .'
-            }
-        }
-        stage('Deploy') {
+        stage('Restart Container') {
             steps {
                 sh '''
-                docker stop django-todo-api || true
-                docker rm django-todo-api || true
-                docker run -d --name django-todo-api -p 8000:8000 django-todo-api:$BUILD_NUMBER
+                docker stop todo-api || true
+                docker rm todo-api || true
+                docker run -d --name todo-api -p 8000:8000 todo-api:latest
                 '''
             }
         }
     }
     post {
         always {
-            cleanWs()  // Clean workspace
+            cleanWs()
         }
     }
 }
