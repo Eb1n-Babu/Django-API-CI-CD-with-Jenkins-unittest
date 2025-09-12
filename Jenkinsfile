@@ -22,7 +22,6 @@ pipeline {
                 bat '''
                 docker stop todo-api || exit 0
                 docker rm todo-api || exit 0
-                docker pull todo-api:latest
                 docker run -d --name todo-api -p 8000:8000 todo-api:latest
                 '''
             }
