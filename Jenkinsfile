@@ -10,10 +10,10 @@ pipeline {
         stage('Test') {
             steps {
                 bat '''
-                "C:\\Users\\ebinb\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m venv venv
+                "python -m venv venv
                 call venv\\Scripts\\activate
                 pip install -r requirements.txt
-                C:\\Users\\ebinb\\AppData\\Local\\Programs\\Python\\Python313\\python.exe manage.py test
+                python manage.py test
                 '''
             }
         }
